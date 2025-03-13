@@ -1,8 +1,6 @@
 int inches = 0;
 int cm = 0;
 const int CANT_LEDS = 3;
-UltrasonicSensor us(5, 4); //T, E
-
 
 class Led {
 
@@ -34,6 +32,10 @@ public:
       previousMillis = millis();
       turnOn();
     }
+  }
+
+  byte getState(){
+    return this->state;
   }
 
   void setBlinksPerSecond(byte blinksPerSecond) {
@@ -97,6 +99,7 @@ public:
 
 Led leds[] = { Led(8), Led(9), Led(10) };
 byte tiempo_blink_leds;
+UltrasonicSensor us(5, 4); //T, E
 
 void setup() {
   Serial.begin(115200);
@@ -128,12 +131,14 @@ void loop() {
       Serial.println(tiempo_blink_leds);
       for (int i = 0; i < CANT_LEDS; i++) {
         leds[i].setBlinksPerSecond(tiempo_blink_leds);
-        leds[i].setState(Led::STATE_BLINK);
+        if(leds[i].getState() != 2)
+          leds[i].setState(Led::STATE_BLINK);
       }
     }
   }
 
   for(int i = 0; i < CANT_LEDS; i ++)
-    leds[i].touch();
+    if(leds[i].getState() == 2)
+      leds[i].touch();
   delay(100);
 }
