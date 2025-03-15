@@ -3,7 +3,7 @@ class LedsModule
 {
 private:
     const byte NUMBER_LEDS = 3;
-    Led leds[] = {Led(8), Led(9), Led(10)};
+    Led leds[3] = {Led(8), Led(9), Led(10)};
     byte tiempo_blink_leds;
 
 public:
