@@ -19,7 +19,7 @@ public:
         this->pin = pin;
         pinMode(pin, OUTPUT);
         turnOff();
-    }
+    };
 
     void setState(byte state)
     {
@@ -35,17 +35,17 @@ public:
             previousMillis = millis();
             turnOn();
         }
-    }
+    };
 
     byte getState()
     {
         return this->state;
-    }
+    };
 
     void setBlinksPerSecond(byte blinksPerSecond)
     {
         this->blinkMillis = 1000 / blinksPerSecond;
-    }
+    };
 
     void touch()
     {
@@ -58,7 +58,7 @@ public:
             else
                 turnOn();
         }
-    }
+    };
 
 
   

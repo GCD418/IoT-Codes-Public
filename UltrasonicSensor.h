@@ -22,15 +22,15 @@ public:
     {
         this->triggerPin = triggerPin;
         this->echoPin = echoPin;
-    }
+    };
 
     long readCentimeters()
     {
         return 0.01723 * readUltrasonicTime();
-    }
+    };
 
     long readInches()
     {
         return (0.01723 * readUltrasonicTime()) / 2.54;
-    }
+    };
 };
