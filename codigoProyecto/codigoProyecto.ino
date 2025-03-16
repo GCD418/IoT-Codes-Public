@@ -18,7 +18,7 @@ void loop()
   // convert to inches by dividing by 2.54
   Serial.print(cm);
   Serial.println("cm");
-  if (cm > 30)
+  if (cm >= 30)
   {
     leds.turnOff();
   }
@@ -30,7 +30,7 @@ void loop()
     }
     else
     {
-      blinkingTime = map(cm, 4, 29, 5, 1);
+      blinkingTime = map(cm, 4, 29, 20, 1);
       Serial.println(blinkingTime);
       leds.setBlinkPerSeconds(blinkingTime);
     }
