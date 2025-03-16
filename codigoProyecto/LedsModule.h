@@ -3,8 +3,7 @@ class LedsModule
 {
 private:
     const byte NUMBER_LEDS = 3;
-    Led leds[3] = {Led(8), Led(9), Led(10)};
-    byte tiempo_blink_leds;
+    Led leds[3] = {Led(12), Led(13), Led(14)};
 
 public:
     void turnOff()
@@ -23,7 +22,7 @@ public:
     {
         for (int i = 0; i < NUMBER_LEDS; i++)
         {
-            leds[i].setBlinksPerSecond(tiempo_blink_leds);
+            leds[i].setBlinksPerSecond(blinksPerSecond);
             if (leds[i].getState() != 2)
                 leds[i].setState(Led::STATE_BLINK);
         }
