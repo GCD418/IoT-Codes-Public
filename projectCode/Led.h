@@ -60,24 +60,6 @@ public:
         }
     };
 
-
-  
-   
-      
-        
-      
-    
-      
-   
-        
-        
-      
-    
-    
-    
-    
-    
-    
 private:
   void turnOn() {
     digitalWrite(pin, HIGH);
