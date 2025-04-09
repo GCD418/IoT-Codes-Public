@@ -19,7 +19,6 @@ class ClientHandler:
                 message = data.decode()
                 print(f"[Received] {self.address}: {message}")
                 
-                # Parse the command
                 if message.startswith("GET;ACTUATOR_INTERVALS"):
                     # Register this client as the actuator
                     self.is_actuator = True
@@ -29,7 +28,6 @@ class ClientHandler:
                     self.client_socket.sendall(response.encode())
                 
                 elif message.startswith("PUT;"):
-                    # This is a sensor sending data
                     try:
                         value = message.split(";")[1]
                         # Forward to actuator if available
@@ -45,7 +43,6 @@ class ClientHandler:
                         print(f"[Error] Invalid PUT command: {e}")
                         self.client_socket.sendall("ERROR: Invalid command format".encode())
                 else:
-                    # Echo back any other message for backward compatibility
                     self.client_socket.sendall(b"20,40,60,")
                     
         except Exception as e:
